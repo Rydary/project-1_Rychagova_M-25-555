@@ -33,7 +33,7 @@ ROOMS = {
     'treasure_room': {
           'description': 'Комната, на столе большой сундук. Дверь заперта — нужен особый ключ.',
           'exits': {'south': 'hall'},
-          'items': ['treasure chest'],
+          'items': ['treasure_chest'],
           'puzzle': ('Дверь защищена кодом. Введите код (подсказка: это число пятикратного шага, 2*5= ? )', '10')
     },
     'basement': {
