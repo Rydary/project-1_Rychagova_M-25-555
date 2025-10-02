@@ -2,3 +2,17 @@
 dist/
 __pycache__/
 *.pyc
+# Кэш Python во всех папках
+**/__pycache__/
+*.pyc
+
+# Сборка и дистрибутивы
+dist/
+build/
+
+# Локальные настройки IDE
+.vscode/
+.idea/
+
+# Системные файлы
+.DS_Store

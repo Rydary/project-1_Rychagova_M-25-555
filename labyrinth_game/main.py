@@ -6,6 +6,10 @@ from .utils import attempt_open_treasure, describe_current_room, show_help, solv
 
 
 def main():
+    """
+    Главная функция, которая обрабатывает все команды от пользователя.
+
+    """
     print("Добро пожаловать в Лабиринт сокровищ!")
 
     game_state = {
@@ -20,8 +24,14 @@ def main():
         process_command(game_state, command)
 
 
-# Function to develop all commands from user look, use, go, take, inventory, quit
 def process_command(game_state, command):
+    """
+    Отвечает на запрос команды от пользователя.
+
+    Args:
+        game_state: текущее состояние игры.
+        command: командв от пользователя.
+    """
 
     command_parts = command.lower().split()
 

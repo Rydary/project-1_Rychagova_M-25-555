@@ -4,6 +4,18 @@ from .utils import random_event
 
 # Function shows availiable_inventory
 def show_inventory(game_state):
+    
+    """
+    Возвращает описание доступного инвентаря.
+
+    Args:
+        game_state: текущее состояние игры.
+
+    Returns:
+        list: Доступный инвентарь.
+    """
+    
+    
     available_inventory = game_state["player_inventory"]
     if game_state["player_inventory"] != "":
         print(f"Доступный инвентарь: {available_inventory}")
@@ -13,6 +25,14 @@ def show_inventory(game_state):
 
 # Function takes prompt from the player
 def get_input(prompt="> "):
+    
+    """
+    Возвращает действие на запрос от пользователя.
+
+    Args:
+        prompt: Запрос от игрока.
+    """
+    
     try:
         user_input = input(prompt)
         return user_input.strip().lower()
@@ -23,6 +43,9 @@ def get_input(prompt="> "):
 
 # Function moves player
 def move_player(game_state, direction):
+    
+    """Перемещает игрока в указанном направлении и обновляет состояние игры."""
+    
     current_room_name = game_state["current_room"]
     current_room = ROOMS[current_room_name]
     next_room = current_room["exits"][direction]
@@ -51,6 +74,9 @@ def move_player(game_state, direction):
 
 # Function to manage items
 def take_item(game_state, item_name):
+    
+    """Добавляет арсеналь в инвентарь игрока и удаляет его из комнаты."""
+    
     current_room_name = game_state["current_room"]
     current_room = ROOMS[current_room_name]
     if item_name in current_room["items"]:
@@ -63,6 +89,9 @@ def take_item(game_state, item_name):
 
 # Function to use items
 def use_items(game_state, item_name):
+    
+    """Позволяет игроку использовать доступный инвентарь/сообщает о невозможности."""
+    
     if item_name not in game_state["player_inventory"]:
         print("У вас нет такого предмета.")
         return

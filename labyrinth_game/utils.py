@@ -7,6 +7,9 @@ from .constants import EVENT_PROBABILITY, ROOMS, SCENARIOS_NUM
 
 # Function describes current room
 def describe_current_room(game_state):
+    
+    """Описывает текущее состояние комнаты."""
+    
     room_name = game_state["current_room"]
     room = ROOMS[room_name]
 
@@ -29,6 +32,9 @@ def describe_current_room(game_state):
 
 # Function to solve puzzles
 def solve_puzzle(game_state):
+    
+    """Помогает игрроку решить загадку."""
+    
     current_room_name = game_state["current_room"]
     current_room = ROOMS[current_room_name]
     if current_room["puzzle"] is None:
@@ -72,6 +78,9 @@ def solve_puzzle(game_state):
 
 # Function to open treasure box
 def attempt_open_treasure(game_state):
+    
+    """Открывает запертый сундук, если у игррока есть ключ и/или код."""
+    
     current_room_name = game_state["current_room"]
     current_room = ROOMS[current_room_name]
     if "treasure_chest" not in current_room["items"]:
@@ -106,6 +115,9 @@ def attempt_open_treasure(game_state):
 
 # Function to help user
 def show_help(command):
+    
+    """Показывает все доступные команды."""
+    
     print("\nДоступные команды:")
     for command, description in command.items():
         print(f" {command:<16} - {description}")
@@ -113,12 +125,18 @@ def show_help(command):
 
 # Function to generate random number
 def pseudo_random(seed, modulo):
+    
+    """Генерирует случайное число."""
+    
     value = (math.sin(seed * 12.9898)) * 43758.5453
     return math.floor(((value - math.floor(value))) * modulo)
 
 
 # Function to gemerate traps
 def trigger_trap(game_state):
+    
+    """Активирует ловушку."""
+    
     print("Ловушка активирована! Пол стал дрожать...")
     inventory = game_state["player_inventory"]
     steps = game_state["steps_taken"]
@@ -138,6 +156,9 @@ def trigger_trap(game_state):
 
 # Function to generate random events
 def random_event(game_state):
+    
+    """Создает случайное событие для игрока."""
+    
     event_probability = pseudo_random(game_state["steps_taken"], EVENT_PROBABILITY)
     if event_probability == 0:
         define_event = pseudo_random(game_state["steps_taken"] + 1, SCENARIOS_NUM)
